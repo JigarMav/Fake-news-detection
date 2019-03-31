@@ -1,0 +1,15 @@
+{% extends 'posts/news.html' %}
+{% block content %}
+{% for b in business %}
+<img src= {{ b.urlToImage }} class="card-img-top" alt="...">
+<div class="card-body">
+    <p class="card-text"><small class="text-muted">Author | {{b.author}}</small></p>
+<p class="card-text"><small class="text-muted">Published At | {{b.publishedAt}}</small></p>
+
+<h5 class="card-title"><a href={{b.url}}>{{b.title}}</a></h5>
+<p class="card-text">{{b.content}}</p>
+</div>
+
+
+{% endfor %}
+{% endblock content %}

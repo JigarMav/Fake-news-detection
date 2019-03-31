@@ -6,6 +6,7 @@ from newsapi import NewsApiClient
 # Create your views here.
 #api_key = 70c200a5636c44e69a93e7816b8eaf77
 newsapi = NewsApiClient(api_key='70c200a5636c44e69a93e7816b8eaf77')
+print(newsapi)
 
 choices = {
     'ABC':'abc-news',
@@ -24,7 +25,7 @@ top_headlines_all = newsapi.get_top_headlines(
 # print(top_headlines_all)
 
 all_articles = newsapi.get_everything(
-                                      sources='bbc-news,the-verge',
+                                      sources='bbc-news',
 
                                       language='en',
                                       sort_by='relevancy',)
@@ -91,8 +92,64 @@ def post(request):
 
 def sports(request):
     template = 'posts/sports.html'
+    url_sport = ('https://newsapi.org/v2/top-headlines?country=in&category=sports&apiKey=70c200a5636c44e69a93e7816b8eaf77')
+    response = requests.get(url_sport).json()
     context = {
-        'data':data,
+    'sports':response['articles'],
     }
+    # print(response)
+    return render(request,template,context)
+
+
+def top_articles(request):
+    template = 'posts/top.html'
+
+    context = {
+        'data':top_headlines_all['articles'],
+    }
+    # for x in top_headlines_all:
+    #     print(top_headlines_all['title'])
+    # print(top_headlines_all)
+    return render(request, template, context)
+
+def tech(request):
+    template = 'posts/tech.html'
+    url_sport = ('https://newsapi.org/v2/top-headlines?country=in&category=technology&apiKey=70c200a5636c44e69a93e7816b8eaf77')
+    response = requests.get(url_sport).json()
+    context = {
+    'techs':response['articles'],
+    }
+    # print(response)
+    return render(request,template,context)
+
+def business(request):
+    template = 'posts/business.html'
+    url_sport = ('https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=70c200a5636c44e69a93e7816b8eaf77')
+    response = requests.get(url_sport).json()
+    context = {
+    'business':response['articles'],
+    }
+    # print(response)
+    return render(request,template,context)
+
+def entertain(request):
+    template = 'posts/entertain.html'
+    url_sport = ('https://newsapi.org/v2/top-headlines?country=in&category=entertainment&apiKey=70c200a5636c44e69a93e7816b8eaf77')
+    response = requests.get(url_sport).json()
+    context = {
+    'entertain':response['articles'],
+    }
+    # print(response)
+    return render(request,template,context)
+
+
+def health(request):
+    template = 'posts/business.html'
+    url_sport = ('https://newsapi.org/v2/top-headlines?country=in&category=health&apiKey=70c200a5636c44e69a93e7816b8eaf77')
+    response = requests.get(url_sport).json()
+    context = {
+    'health':response['articles'],
+    }
+    # print(response)
     return render(request,template,context)
 

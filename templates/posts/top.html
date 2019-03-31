@@ -1,0 +1,15 @@
+{% extends 'posts/news.html' %}
+{% block content %}
+{% for top in data %}
+<img src= {{ top.urlToImage }} class="card-img-top" alt="...">
+<div class="card-body">
+    <p class="card-text"><small class="text-muted">Author | {{top.author}}</small></p>
+<p class="card-text"><small class="text-muted">Published At | {{top.publishedAt}}</small></p>
+
+<h5 class="card-title"><a href={{top.url}}>{{top.title}}</a></h5>
+<p class="card-text">{{top.content}}</p>
+</div>
+
+
+{% endfor %}
+{% endblock content %}

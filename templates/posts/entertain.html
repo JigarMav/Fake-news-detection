@@ -1,0 +1,15 @@
+{% extends 'posts/news.html' %}
+{% block content %}
+{% for enter in entertain %}
+<img src= {{ enter.urlToImage }} class="card-img-top" alt="...">
+<div class="card-body">
+    <p class="card-text"><small class="text-muted">Author | {{enter.author}}</small></p>
+<p class="card-text"><small class="text-muted">Published At | {{enter.publishedAt}}</small></p>
+
+<h5 class="card-title"><a href={{enter.url}}>{{enter.title}}</a> </h5>
+<p class="card-text">{{enter.content}}</p>
+</div>
+
+
+{% endfor %}
+{% endblock content %}

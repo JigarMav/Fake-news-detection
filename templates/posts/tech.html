@@ -1,0 +1,15 @@
+{% extends 'posts/news.html' %}
+{% block content %}
+{% for tech in techs %}
+<img src= {{ tech.urlToImage }} class="card-img-top" alt="...">
+<div class="card-body">
+    <p class="card-text"><small class="text-muted">Author | {{tech.author}}</small></p>
+<p class="card-text"><small class="text-muted">Published At | {{tech.publishedAt}}</small></p>
+
+<h5 class="card-title"><a href={{tech.url}}>{{tech.title}}</a> </h5>
+<p class="card-text">{{tech.content}}</p>
+</div>
+
+
+{% endfor %}
+{% endblock content %}
